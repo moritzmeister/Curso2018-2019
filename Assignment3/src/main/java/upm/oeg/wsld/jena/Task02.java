@@ -39,17 +39,22 @@ public class Task02
 		johnSmith.addLiteral(vcardfn, fullName);
 		
 		System.out.println("vcard:"+VCARD.FN.toString());
-		
+		System.out.println("-----------------");
+
 		// ** TASK 2.2: Create a new resource for Jane Smith, specifying her full name and email **
 		Resource janeSmith = model.createResource(ns+"JaneSmith");
 		janeSmith.addLiteral(VCARD.FN, "Jane Smith");
 		janeSmith.addLiteral(VCARD.EMAIL, "jSmith@somewhere.com");
+		model.write(System.out, "TURTLE");
+		System.out.println("-----------------");
 		
 		// ** TASK 2.3: Add Jane as a person who John knows through an object property from the FOAF vocabulary**
 //				Property knows = model.createProperty(foafNS+"knows");		
 //				johnSmith.addProperty(knows, janeSmith);
 		
 		johnSmith.addProperty(FOAF.knows, janeSmith);
+		model.write(System.out, "TURTLE");
+		System.out.println("-----------------");
 		
 		model.write(System.out, "RDF/XML-ABBREV");
 	}

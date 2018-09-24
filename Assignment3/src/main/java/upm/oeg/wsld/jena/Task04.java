@@ -45,6 +45,7 @@ public class Task04
 		model.read(in, null);
 		
 		// List all the resources with the property "vcard:FN"
+		System.out.println("Start:");
 		String queryString = 
 				"PREFIX vcard: <" + VCARD.getURI() + "> " +
 				"SELECT ?Subject "+
@@ -59,9 +60,11 @@ public class Task04
 			Resource subj = (Resource) binding.get("Subject");
 		    System.out.println("Subject: "+subj.getURI());
 		}
+		System.out.println("-----------------");
 		
 		// ** TASK 4.1: List all the resources with the property "vcard:FN" and their full names **
-		queryString = 
+		System.out.println("TASK 4.1");
+		queryString =
 				"PREFIX vcard: <" + VCARD.getURI() + "> " +
 				"SELECT ?Subject ?FullName "+
 				"WHERE { ?Subject vcard:FN ?FullName.} ";
@@ -76,9 +79,11 @@ public class Task04
 			Literal fn = binding.getLiteral("FullName");
 			System.out.println(subj.getURI()+" "+VCARD.FN.getURI()+" "+fn);
 		}
+		System.out.println("-----------------");
 		
 		// ** TASK 4.2: Query all the resources with the family name "Smith" **
-		queryString = 
+		System.out.println("TASK 4.2");
+		queryString =
 				"PREFIX vcard: <" + VCARD.getURI() + "> " +
 				"SELECT ?Subject "+
 				"WHERE { ?Subject vcard:Family 'Smith'.} ";
@@ -92,9 +97,11 @@ public class Task04
 			Resource subj = (Resource) binding.get("Subject");
 			System.out.println("Subject: " + subj.getURI());
 		}
+		System.out.println("-----------------");
 		
 		// ** TASK 4.3: Query all the resources with an email  **
-		queryString = 
+		System.out.println("TASK 4.3");
+		queryString =
 				"PREFIX foaf: <" + foafNS + "> " +
 				"SELECT ?Subject ?Email "+
 				"WHERE { ?Subject foaf:email ?Email.} ";
@@ -110,9 +117,11 @@ public class Task04
 			
 			System.out.println(subj.getURI()+" "+foafEmailURI+" "+email);
 		}
+		System.out.println("-----------------");
 		
 		// ** TASK 4.4 (advanced): Query all the subjects knowing "Jane Smith" and list their given names  **
-		queryString = 
+		System.out.println("TASK 4.4");
+		queryString =
 				"PREFIX foaf: <" + foafNS + "> " +
 				"PREFIX vcard: <" + VCARD.getURI() + "> " +
 				"SELECT ?Subject ?Given "+

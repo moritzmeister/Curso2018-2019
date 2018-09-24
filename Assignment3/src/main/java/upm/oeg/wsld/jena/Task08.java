@@ -31,6 +31,7 @@ import org.apache.jena.vocabulary.VCARD;
  */
 public class Task08
 {
+	public static String ns = "http://data.org#";
 	
 	public static void main(String args[])
 	{
@@ -57,10 +58,29 @@ public class Task08
 		
 
 		// ** TASK 8.1: List all the Person (http://data.org#Person) resources in Model1 looking for missing properties **
+		OntClass person = model1.getOntClass(ns+"Person");
+		ExtendedIterator instances = person.listInstances();
+
+		while(instances.hasNext()) {
+			Individual next = (Individual) instances.next();
+			System.out.println(next);
+
+			ExtendedIterator props = next.listProperties();
+			while(props.hasNext()) {
+				System.out.println(props.next());
+			}
+
+			System.out.println("------");
+		}
+
+		model1.add(model2);
+
 		// ** Each resource should have a given name, a family name and an email **
 		// ** Try to complete this information using the data from Data02 (Model2) **
 		// ** In both datasets the same URIs are used. You can use either iterators or SPARQL (or both...) **
 		// ** As a result, every individual in Model1 should have all properties properly filled **
-		
+
+		model1.write(System.out, "TURTLE");
+
 	}
 }

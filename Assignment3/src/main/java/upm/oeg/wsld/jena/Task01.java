@@ -36,9 +36,11 @@ public class Task01
 
 		// Write it to standard out
 		model.write(System.out);
+		System.out.println("-----------------");
 
 		// ** TASK 1.1: Now write the model in Turtle form **
 		model.write(System.out, "TURTLE");
+		System.out.println("-----------------");
 		
 		// ** TASK 1.2: Read a new model and merge it with the previous one **
 		String filename2 = "resources/example2.rdf";
@@ -52,5 +54,8 @@ public class Task01
 
 		// Write it to standard out
 		model.write(System.out);
+		System.out.println("-----------------");
+
+		model.write(System.out, "TURTLE");
 	}
 }
